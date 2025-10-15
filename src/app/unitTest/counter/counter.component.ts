@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-counter',
   templateUrl: './counter.component.html',
+  standalone: true,
   styleUrls: ['./counter.component.css']
 })
 export class CounterComponent {

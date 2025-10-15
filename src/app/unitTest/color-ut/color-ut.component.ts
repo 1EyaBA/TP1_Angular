@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-color-ut',
   templateUrl: './color-ut.component.html',
+  standalone: true,
   styleUrls: ['./color-ut.component.css']
 })
 export class ColorUtComponent {
