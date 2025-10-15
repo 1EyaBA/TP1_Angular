@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cv } from '../model/cv';
+import {Observable, of} from "rxjs";
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +17,8 @@ export class EmbaucheService {
    * @returns CV[]
    *
    */
-  getEmbauchees(): Cv[] {
-    return this.embauchees;
+  getEmbauchees(): Observable<Cv[]> {
+    return of(this.embauchees);
   }
 
   /**
