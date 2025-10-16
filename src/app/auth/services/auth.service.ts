@@ -6,7 +6,7 @@ import { API } from '../../../config/api.config';
 import { Observable, tap } from 'rxjs';
 import { StoredAuthData } from '../interfaces/auth.interface';
 const AUTH_STORAGE_KEY = 'auth_data';
-const TOKEN_STORAGE_KEY = 'token'; // Pour compatibilité avec l'ancien code
+const TOKEN_STORAGE_KEY = 'token';
 
 @Injectable({
   providedIn: 'root',
@@ -14,12 +14,10 @@ const TOKEN_STORAGE_KEY = 'token'; // Pour compatibilité avec l'ancien code
 export class AuthService {
   private http = inject(HttpClient);
 
-  // Signals pour l'état d'authentification
   private userIdSignal = signal<string | null>(null);
   private userEmailSignal = signal<string | null>(null);
   private tokenSignal = signal<string | null>(null);
 
-  // Signals publics en lecture seule
   readonly userId = this.userIdSignal.asReadonly();
   readonly userEmail = this.userEmailSignal.asReadonly();
   readonly token = this.tokenSignal.asReadonly();
@@ -59,9 +57,6 @@ export class AuthService {
     });
   }
 
-  /**
-   * Authentification de l'utilisateur
-   */
   login(credentials: CredentialsDto): Observable<LoginResponseDto> {
     return this.http.post<LoginResponseDto>(API.login, credentials).pipe(
       tap((response) => {
@@ -72,37 +67,24 @@ export class AuthService {
     );
   }
 
-  /**
-   * Déconnexion de l'utilisateur
-   */
   logout(): void {
     this.clearAuthState();
   }
 
-  /**
-   * Définir l'état d'authentification
-   */
   private setAuthState(id: string, email: string, token: string): void {
     this.userIdSignal.set(id);
     this.userEmailSignal.set(email);
     this.tokenSignal.set(token);
   }
 
-  /**
-   * Effacer l'état d'authentification
-   */
   private clearAuthState(): void {
     this.userIdSignal.set(null);
     this.userEmailSignal.set(null);
     this.tokenSignal.set(null);
   }
 
-  /**
-   * Charger l'état depuis localStorage au démarrage
-   */
   private loadAuthState(): void {
     try {
-      // Essayer d'abord avec le nouveau format (auth_data)
       const storedData = localStorage.getItem(AUTH_STORAGE_KEY);
       if (storedData) {
         const authData: StoredAuthData = JSON.parse(storedData);
@@ -114,11 +96,9 @@ export class AuthService {
         }
       }
 
-      // Fallback : essayer avec l'ancien format (token seul)
       const oldToken = localStorage.getItem(TOKEN_STORAGE_KEY);
       if (oldToken) {
-        // Si on a seulement le token, on crée un état minimal
-        this.setAuthState(oldToken, 'user@example.com', oldToken);
+        this.setAuthState(oldToken, 'user@gmail.com', oldToken);
       }
     } catch (error) {
       console.error('Erreur lors du chargement de l\'état d\'authentification', error);
@@ -126,32 +106,21 @@ export class AuthService {
     }
   }
 
-  /**
-   * Sauvegarder dans localStorage
-   */
   private saveToStorage(data: StoredAuthData): void {
     try {
-      // Sauvegarder dans le nouveau format (auth_data)
       localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(data));
 
-      // Sauvegarder aussi dans l'ancien format (token) pour compatibilité
       localStorage.setItem(TOKEN_STORAGE_KEY, data.token);
     } catch (error) {
       console.error('Erreur lors de la sauvegarde dans localStorage', error);
     }
   }
 
-  /**
-   * Effacer localStorage
-   */
   private clearStorage(): void {
     localStorage.removeItem(AUTH_STORAGE_KEY);
     localStorage.removeItem(TOKEN_STORAGE_KEY);
   }
 
-  /**
-   * Méthode utilitaire pour obtenir le token (pour l'interceptor)
-   */
   getToken(): string | null {
     return this.tokenSignal();
   }

@@ -29,12 +29,12 @@ export class AuthGuard implements CanActivate {
     // - Les signals (id, email, token)
     // - ET le localStorage (auth_data et token)
     if (!this.authService.isAuthenticated()) {
-      console.warn('🔒 Accès refusé - Utilisateur non authentifié');
+      console.warn('Accès refusé - Utilisateur non authentifié');
       this.router.navigate([APP_ROUTES.login]);
       return false;
     }
 
-    console.log('✅ Accès autorisé - Utilisateur authentifié');
+    console.log(' Accès autorisé - Utilisateur authentifié');
     return true;
   }
 }
