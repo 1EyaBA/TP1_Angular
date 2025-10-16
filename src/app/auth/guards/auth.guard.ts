@@ -17,7 +17,6 @@ export class AuthGuard implements CanActivate {
   private authService = inject(AuthService);
   private router = inject(Router);
 
-
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -26,10 +25,16 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
+    // Le computed signal isAuthenticated vérifie :
+    // - Les signals (id, email, token)
+    // - ET le localStorage (auth_data et token)
     if (!this.authService.isAuthenticated()) {
+      console.warn('🔒 Accès refusé - Utilisateur non authentifié');
       this.router.navigate([APP_ROUTES.login]);
       return false;
     }
+
+    console.log('✅ Accès autorisé - Utilisateur authentifié');
     return true;
   }
 }
