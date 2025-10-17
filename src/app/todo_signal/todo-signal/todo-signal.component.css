@@ -1,0 +1,146 @@
+/* todo.component.css */
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.form-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-container input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form-container input:focus {
+  outline: none;
+  border-color: #4299e1;
+}
+
+.add-btn {
+  padding: 10px 24px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.add-btn:hover {
+  background: #dc2626;
+}
+
+.columns {
+  display: flex;
+  gap: 15px;
+}
+
+.column {
+  flex: 1;
+  min-width: 0;
+}
+
+.column-header {
+  padding: 12px;
+  border-radius: 8px 8px 0 0;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.column-header.waiting {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.column-header.in-progress {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.column-header.done {
+  background: #ccfbf1;
+  color: #134e4a;
+}
+
+.column-body {
+  background: #f9fafb;
+  padding: 15px;
+  min-height: 400px;
+  border-radius: 0 0 8px 8px;
+}
+
+.todo-item {
+  background: white;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.todo-content {
+  flex: 1;
+}
+
+.todo-content h4 {
+  margin: 0 0 6px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.todo-content p {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 8px;
+  margin-left: 10px;
+}
+
+.action-btn {
+  padding: 6px 12px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.action-btn:hover {
+  background: #2563eb;
+}
+
+.delete-btn {
+  padding: 4px 10px;
+  background: transparent;
+  color: #ef4444;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.delete-btn:hover {
+  background: #fee2e2;
+}

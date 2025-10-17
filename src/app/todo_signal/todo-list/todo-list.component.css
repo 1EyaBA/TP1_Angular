@@ -1,0 +1,28 @@
+.column {
+  flex: 1;
+  min-width: 300px;
+}
+.column-header {
+  padding: 12px;
+  border-radius: 8px 8px 0 0;
+  font-weight: 600;
+  font-size: 16px;
+}
+.column-header.waiting {
+  background: #7097e4;
+  color: #374151;
+}
+.column-header.in-progress {
+  background: #fef3c7;
+  color: #92400e;
+}
+.column-header.done {
+  background: #ccfbf1;
+  color: #134e4a;
+}
+.column-body {
+  background: #f9fafb;
+  padding: 15px;
+  min-height: 400px;
+  border-radius: 0 0 8px 8px;
+}
