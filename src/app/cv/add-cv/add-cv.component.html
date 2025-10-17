@@ -26,7 +26,7 @@
   <input type="text" class="form-control" formControlName="path" />
 
   <button [disabled]="form.invalid" class="btn btn-primary" (click)="addCv()">
-    add cv
+    {{ isSubmitting() ? 'Envoi en cours...' : 'add cv' }}
   </button>
 </form>
 {{ form.errors | json }}
