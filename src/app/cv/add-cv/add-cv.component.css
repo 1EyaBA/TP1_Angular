@@ -1,0 +1,21 @@
+.ttc-calculator {
+  background-color: #e9ecef;
+  padding: 30px;
+}
+
+.container {
+  background-color: #f8f9fa;
+}
+
+input {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+small {
+  display: block;
+  text-align: center;
+  color: #6c757d;
+  margin-top: 4px;
+}

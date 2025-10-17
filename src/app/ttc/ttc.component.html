@@ -1,0 +1,54 @@
+
+<div class="ttc-calculator">
+  <h1 class="text-center mb-4">TTC Calculator</h1>
+
+<div class="container bg-light p-4 rounded shadow-sm">
+  <div class="row g-3 align-items-center mb-4">
+    <div class="col-md-4">
+      <input type="number" class="form-control"  placeholder="Enter HT amount" [value]="prixHT()" (input)="prixHT.set($any($event.target).value)">
+      <small>Prix HT</small>
+    </div>
+
+    <div class="col-md-4">
+      <input type="number"
+             class="form-control"
+             placeholder="Quantité"
+             [value]="quantite()"
+             (input)="quantite.set($any($event.target).valueAsNumber)">
+      <small>Quantité</small>
+    </div>
+
+    <div class="col-md-4">
+      <input type="number"
+             class="form-control"
+             placeholder="TVA (%)"
+             [value]="tauxTVA()"
+             (input)="tauxTVA.set($any($event.target).valueAsNumber)">
+      <small>TVA</small>
+    </div>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-md-4">
+      <div class="alert alert-info text-center">
+        Prix unitaire TTC : <strong>{{ prixUnitaireTTC() | currency:'USD' }}</strong>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="alert alert-success text-center">
+        Prix total TTC : <strong>{{ prixTotalTTC() | currency:'USD' }}</strong>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="alert alert-danger text-center">
+        Discount : <strong>{{ remise() | number:'1.0-0' }}%</strong>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+</div>

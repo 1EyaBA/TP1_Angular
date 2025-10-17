@@ -11,6 +11,8 @@ import { CvComponent } from "./cv/cv/cv.component";
 import { DetailsCvComponent } from "./cv/details-cv/details-cv.component";
 import { RhComponent } from "./optimizationPattern/rh/rh.component";
 import {TodoComponent} from "./todo/todo/todo.component";
+import {TtcComponent } from "./ttc/ttc.component";
+import {TodoSignalComponent} from "./todo_signal/todo-signal/todo-signal.component";
 
 export const routes: Route[] = [
   { path: "login", component: LoginComponent },
@@ -33,6 +35,15 @@ export const routes: Route[] = [
     path: "admin",
     component: AdminComponent,
     children: [{ path: "color", component: ColorComponent }],
+  },
+  {
+    path:"ttc",
+    component:TtcComponent,
+
+  },
+  {
+    path:"todo2"
+    ,component:TodoSignalComponent
   },
   { path: "**", component: NF404Component },
 ];

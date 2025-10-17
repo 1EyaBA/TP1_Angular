@@ -1,0 +1,30 @@
+<div class="container">
+  <app-todo-form (todoAdded)="addTodo($event)" />
+
+  <div class="columns">
+    <app-todo-list
+      title="Waiting"
+      todoClass="waiting"
+      [todos]="waitingTodos()"
+      action="Start"
+      (statusChanged)="updateStatus($event, TodoStatus.IN_PROGRESS)"
+      (todoDeleted)="deleteTodo($event)"
+    />
+
+    <app-todo-list
+      title="In Progress Todos"
+      todoClass="in-progress"
+      [todos]="inProgressTodos()"
+      action="Complete"
+      (statusChanged)="updateStatus($event, TodoStatus.DONE)"
+      (todoDeleted)="deleteTodo($event)"
+    />
+
+    <app-todo-list
+      title="Done Todos"
+      todoClass="done"
+      [todos]="doneTodos()"
+      (todoDeleted)="deleteTodo($event)"
+    />
+  </div>
+</div>

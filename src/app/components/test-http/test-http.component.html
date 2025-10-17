@@ -1,5 +1,5 @@
-<!-- <pre *ngFor="let todo of todos">
-{{ todo | json}}
+<!-- <pre *ngFor="let todo-signal of todos">
+{{ todo-signal | json}}
 </pre> -->
 @for (todo of todos$ | async; track todo) {
   <pre>

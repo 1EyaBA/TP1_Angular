@@ -5,7 +5,7 @@ import { TodoService } from '../service/todo.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-    selector: 'app-todo',
+    selector: 'app-todo-signal',
     templateUrl: './todo.component.html',
     styleUrls: ['./todo.component.css'],
     providers: [TodoService],
