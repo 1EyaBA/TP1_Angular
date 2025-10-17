@@ -13,6 +13,7 @@ import { RhComponent } from "./optimizationPattern/rh/rh.component";
 import {TodoComponent} from "./todo/todo/todo.component";
 import {TtcComponent } from "./ttc/ttc.component";
 import {TodoSignalComponent} from "./todo_signal/todo-signal/todo-signal.component";
+import { RainbowComponent } from "./components/rainbow/rainbow.component";
 
 export const routes: Route[] = [
   { path: "login", component: LoginComponent },
@@ -45,5 +46,6 @@ export const routes: Route[] = [
     path:"todo2"
     ,component:TodoSignalComponent
   },
+  { path: "rainbow", component: RainbowComponent },
   { path: "**", component: NF404Component },
 ];
