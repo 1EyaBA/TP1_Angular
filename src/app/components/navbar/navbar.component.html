@@ -73,6 +73,11 @@
           routerLinkActive="active text-primary"
           >Login</a
         >
+         <a
+          class="nav-link"
+          [routerLink]="['rainbow']"
+          routerLinkActive="active text-primary"
+          >Rainbow</a>
         <a
           *ngIf="authService.isAuthenticated()"
           class="nav-link"
