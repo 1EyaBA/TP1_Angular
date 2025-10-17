@@ -34,6 +34,9 @@ export class CvService {
   getFakeCvs(): Cv[] {
     return this.cvs;
   }
+  getFirstCv() : Cv {
+    return this.cvs[0];
+  }
 
   /**
    *
