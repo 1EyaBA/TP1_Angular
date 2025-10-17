@@ -1,0 +1,15 @@
+<div class="form-container">
+  <input
+    type="text"
+    placeholder="name"
+    [(ngModel)]="name"
+    (keyup.enter)="submit()"
+  />
+  <input
+    type="text"
+    placeholder="content"
+    [(ngModel)]="content"
+    (keyup.enter)="submit()"
+  />
+  <button class="add-btn" (click)="submit()">add</button>
+</div>

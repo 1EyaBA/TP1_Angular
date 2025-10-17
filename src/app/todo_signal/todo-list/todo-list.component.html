@@ -1,0 +1,15 @@
+<div class="column">
+  <div class="column-header" [class]="todoClass()">
+    {{ title() }}
+  </div>
+  <div class="column-body">
+    @for (todo of todos(); track todo.id) {
+      <app-todo-item
+        [todo]="todo"
+        [action]="action()"
+        (actionClicked)="statusChanged.emit(todo.id)"
+        (deleteClicked)="todoDeleted.emit(todo.id)"
+      />
+    }
+  </div>
+</div>

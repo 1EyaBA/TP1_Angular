@@ -22,9 +22,9 @@ export class TodoService {
   }
 
   /**
-   *Elle permet d'ajouter un todo
+   *Elle permet d'ajouter un todo-signal
    *
-   * @param todo: Todo
+   * @param todo-signal: Todo
    *
    */
   addTodo(todo: Todo): void {
@@ -32,9 +32,9 @@ export class TodoService {
   }
 
   /**
-   * Delete le todo s'il existe
+   * Delete le todo-signal s'il existe
    *
-   * @param todo: Todo
+   * @param todo-signal: Todo
    * @returns boolean
    */
   deleteTodo(todo: Todo): boolean {

@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import {Component, inject, signal} from "@angular/core";
 import { AbstractControl, FormBuilder, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CvService } from "../services/cv.service";
 import { Router } from "@angular/router";
@@ -23,6 +23,7 @@ export class AddCvComponent {
   private router = inject(Router);
   private toastr = inject(ToastrService);
   private formBuilder = inject(FormBuilder);
+  isSubmitting =signal(false);
 
 
   form = this.formBuilder.group(
@@ -47,12 +48,18 @@ export class AddCvComponent {
   );
 
   addCv() {
+    if(this.form.invalid){
+      return ;
+    }
+    this.isSubmitting.set(true)
     this.cvService.addCv(this.form.value as Cv).subscribe({
       next: (cv) => {
+        this.isSubmitting.set(false)
         this.router.navigate([APP_ROUTES.cv]);
         this.toastr.success(`Le cv ${cv.firstname} ${cv.name}`);
       },
       error: (err) => {
+        this.isSubmitting.set(false)
         this.toastr.error(
           `Une erreur s'est produite, Veuillez contacter l'admin`
         );

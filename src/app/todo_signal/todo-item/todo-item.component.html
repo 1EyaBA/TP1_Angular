@@ -1,0 +1,14 @@
+<div class="todo-item">
+  <div class="todo-content">
+    <h4>{{ todo().name }}</h4>
+    <p>{{ todo().content }}</p>
+  </div>
+  <div class="todo-actions">
+    @if (action()) {
+      <button class="action-btn" (click)="onAction()">
+        {{ action() }}
+      </button>
+    }
+    <button class="delete-btn" (click)="onDelete()">×</button>
+  </div>
+</div>

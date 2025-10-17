@@ -74,18 +74,67 @@
             routerLinkActive="active text-primary"
             >Login</a
             >
-        }
-        @if (isAuthenticated()) {
-          <a class="nav-link" (click)="logout()" style="cursor: pointer"
-          >Logout</a
-          >
-        }
-        @if (isAuthenticated() && userEmail()) {
-          <span class="navbar-text ms-auto">
-            {{ userEmail() }}
-          </span>
-        }
-      </div>
-    </div>
-  </div>
-</nav>
+            <a
+              class="nav-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+              [routerLink]="['cv']"
+              routerLinkActive="active text-primary"
+              >Cv</a
+              >
+              @if (authService.isAuthenticated()) {
+                <a
+                  class="nav-link"
+                  [routerLink]="['cv/add']"
+                  routerLinkActive="active text-primary"
+                  >Add Cv</a
+                  >
+                }
+                <a
+                  class="nav-link"
+                  [routerLink]="['todo']"
+                  routerLinkActive="active text-primary"
+                  >Todo</a
+                  >
+                  <a
+                    class="nav-link"
+                    [routerLink]="['word']"
+                    routerLinkActive="active text-primary"
+                    >Word</a
+                    >
+                    <a
+                      class="nav-link"
+                      [routerLink]="['admin', 'color']"
+                      routerLinkActive="active text-primary"
+                      >Color</a
+                      >
+                      <a
+                        class="nav-link"
+                        [routerLink]="['rh']"
+                        routerLinkActive="active text-primary"
+                        >Rh</a
+                        >
+                        <a
+          class="nav-link"
+          [routerLink]="['rainbow']"
+          routerLinkActive="active text-primary"
+          >Rainbow </a
+        >
+                        @if (!authService.isAuthenticated()) {
+                          <a
+                            class="nav-link"
+                            [routerLink]="['login']"
+                            routerLinkActive="active text-primary"
+                            >Login</a
+                            >
+                          }
+                          @if (authService.isAuthenticated()) {
+                            <a
+                              class="nav-link"
+                              (click)="logout()"
+                              >Logout</a
+                              >
+                            }
+                          </div>
+                        </div>
+                      </div>
+                    </nav>
