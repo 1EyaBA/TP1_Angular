@@ -5,14 +5,14 @@ import { Directive, signal, computed, effect, inject, ElementRef } from '@angula
   standalone: true
 })
 export class RainbowDirective {
-  private colors = signal([
+  private colors = [
     'blue', 'red', 'pink', 'yellow', 'green',
     'lightblue', 'orange', 'purple', 'cyan', 'magenta'
-  ]);
+  ];
   private currentColorIndex = signal<number | null>(null);
   private currentColor = computed(() => {
     const index = this.currentColorIndex();
-    return index !== null ? this.colors()[index] : null;
+    return index !== null ? this.colors[index] : null;
   });
 
   private elementRef = inject(ElementRef<HTMLInputElement>);
@@ -20,7 +20,7 @@ export class RainbowDirective {
   constructor() {
     const element = this.elementRef.nativeElement;
     element.addEventListener('keyup', () => {
-      const randomIndex = Math.floor(Math.random() * this.colors().length);
+      const randomIndex = Math.floor(Math.random() * this.colors.length);
       this.currentColorIndex.set(randomIndex);
     });
     effect(() => {
